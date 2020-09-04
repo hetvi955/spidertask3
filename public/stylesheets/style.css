@@ -1,0 +1,18 @@
+.card img{
+  max-width: 170px;
+  align-self: center;
+  padding-top:20px;
+}
+.card p{
+  color:rgb(100, 100, 100);
+  align-self: center; 
+}
+.card .btn{
+  background:rgb(61, 143, 61);
+  color:whitesmoke;
+  float:right;
+}
+.card .price{
+  font-size:20px;
+  float:left;
+}
