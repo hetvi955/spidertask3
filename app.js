@@ -4,13 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs= require('express-handlebars');
-const mongoose= require('mongoose');
 var indexRouter = require('./routes/index');
-
+const dotenv= require('dotenv');
+const connectdb=require('./config/db');
 
 const app = express();
-mongoose.connect('localhost:27017/shoppingcart',
-{ useNewUrlParser: true });
+
+dotenv.config({
+  path:'./config/config.env'
+});
+connectdb();
 
 // view engine
 //to set up .hbs as handlebars extension
@@ -42,3 +45,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//lsten app
+app.listen(3000,()=>{
+  console.log('server up on 3000')  
+});
