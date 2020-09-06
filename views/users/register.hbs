@@ -1,0 +1,29 @@
+<h1>Sign Up</h1>
+
+{{! to output error messages using flash}}
+{{#if errors}}
+    <div>
+        {{# each messages}}
+            <p>{{this}}</p>
+        {{/each}}
+    </div>
+{{/if}}
+
+<form action="/user/register" method="POST">
+    <div class='form-group'>
+        <label for="email">Email</label>
+        <input type="email" id='email' name='email' class='form-control'>
+    </div>
+    <div class='form-group'>
+        <label for="password">Password</label>
+        <input type="password" id='password' name='password' class='form-control'>
+    </div>
+    <div class='form-group'>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            <option value="customer">Customer</option>
+            <option value="seller">Seller</option>
+        </select>
+    </div>
+    <button type="submit">Sign Up!</button>
+</form>

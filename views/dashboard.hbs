@@ -7,36 +7,23 @@
   <title>Dashboard</title>
 </head>
 <body>
-  <div class="col-sm-6 col-md-4">
-  <div class="card">
-    <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_496612468_2000138820009280460_336567.jpg" class="img-responsive" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <div class='price'>$54</div>
-      <a href="#" class='btn' role='button'>Add to cart!</a>
-    </div>
-    </div>
-    <div class="card">
-    <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_496612468_2000138820009280460_336567.jpg" class="img-responsive" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <div class='price'>$54</div>
-      <a href="#" class='btn' role='button'>Add to cart!</a>
-    </div>
-    </div>
-    <div class="card">
-    <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_496612468_2000138820009280460_336567.jpg" class="img-responsive" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <div class='price'>$54</div>
+{{# each products }}
+  <div class='row'>
+    {{# each this }}
+      <div class="col-sm-6 col-md-4">
+      <div class="card">
+      <img src="{{ this.image}}" class="img-responsive" alt="...">
+      <div class="card-body">
+      <h5 class="card-title">{{ this.title}}</h5>
+      <p class="card-text">{{ this.description}}</p>
+      <div class='price'>{{ this.price}}</div>
       <a href="#" class='btn' role='button'>Add to cart!</a>
     </div>
     </div>
     </div>
 
-  
+    {{/ each}}
+    </div>
+{{/ each}} 
 </body>
 </html>
