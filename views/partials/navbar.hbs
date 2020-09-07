@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Dashboard</a>
+  <a class="navbar-brand" href="/">Dashboard</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,12 +8,12 @@
       <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
 
       {{# if login}}
-       <a class="nav-link" href="#"><i class="fas fa-cart-arrow-down"></i> My cart</a>
-      <a class="nav-link" href="#"><i class="far fa-user"></i> Profile</a>
-        <a href="/user/logout">Log out</a>
+       <a class="nav-link" href="/cart"><i class="fas fa-cart-arrow-down"></i> My cart</a>
+      <a class="nav-link" href="/user/profile"><i class="far fa-user"></i> Profile</a>
+        <a class="nav-link" href="/user/logout">Log out</a>
       {{else}}
-      <a href="/user/register">Signin</a>
-      <a href="/user/login">login</a>
+      <a href="/user/register"> Signup for a new account</a>
+      <a href="/user/login"> login</a>
       {{/if}}
       </div>
   </div>

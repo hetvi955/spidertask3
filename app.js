@@ -6,7 +6,9 @@ var logger = require('morgan');
 const hbs= require('express-handlebars');
 const dotenv= require('dotenv');
 const connectdb=require('./config/db');
+const mongoose= require('mongoose');
 const session=require('express-session');
+const mongostore=require('connect-mongo')(session);
 const Handlebars = require('handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 //authentication
@@ -37,7 +39,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret:'ihateoffee', resave:false, saveUninitialized:false}));
+app.use(session({secret:'ihateoffee', resave:false, saveUninitialized:false,
+ store: new mongostore({
+ mongooseConnection:mongoose.connection,
+ })}));
+
 app.use(flash());
 app.use(passport.initialize());
 
@@ -48,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //to makelogin availaible in all pages in navbar
 app.use((req,res,next)=>{
   res.locals.login = req.isAuthenticated();
+  res.locals.session = req.session;
   next();
 })
 app.use('/user', userRouter);

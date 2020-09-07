@@ -52,7 +52,7 @@ passport.use('local.signin', new localStrategy({
         if(!user){
             return done(null, false, {message:'user not found :('});
         };
-        if(!user.checkPassword(passsword)){
+        if(!user.checkPassword(password)){
             return done(null, false, {message:'Invalid password'});
         }
         return done(null, user);
