@@ -13,9 +13,9 @@ const userSchema= new schema({
         type:String,
         required:true
     },
-    category:{
-        type:String,
-        default:'customer'
+    is_buyer:{
+        type:Boolean,
+        default:true
     },
 });
 

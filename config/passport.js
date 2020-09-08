@@ -17,6 +17,7 @@ passport.deserializeUser((id, done)=>{
 passport.use('local.signup', new localStrategy({
     usernameField:'email',
     passwordField:'password',
+    category:'category',
     passReqToCallback:true
 }, (req,email,password,done)=>{
     User.findOne({'email':email}, (err,user)=>{

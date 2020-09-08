@@ -1,6 +1,7 @@
 function cart(oldcart) {
     //fetch all old card items 
     this.items=oldcart.items || {};
+    console.log(oldcart);
     //set total quan and price to zero in case of new cart
     this.total=oldcart.total || 0;
     this.totalmoney=oldcart.totalmoney || 0;
@@ -22,7 +23,7 @@ function cart(oldcart) {
     this.addarr= function(){
         var arr=[];
         for(var id in this.items){
-            arr.push(this.item[id]);
+            arr.push(this.items[id]);
         }
         return arr;
     };
