@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {{# if login}}
+      <a class="nav-link active" href="/admin" style="padding-left:20px;"><i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/admin/items/additem" style="padding-left:20px;"><i class="fas fa-plus"></i> product</a>
+        <a class="nav-link" href="/user/logout" style="margin-left:750px"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        
+        
+      {{else}}
+      <a href="/user/login" style="padding-top:8px; margin-left:8px; text-decoration:none; color:inherit"> Login / Sign up</a>
+      {{/if}}
+      </div>
+  </div>
+</nav>
+
+<br><br>
+<h1>Categories</h1>
+<a href="/admin/categories/addcategory">Add new category</a>
+<br>
+<table class="table table-striped">
+    <thead>
+        <th>Categories</th>
+        <th>Description</th>
+        <th>Delete</th>
+        
+    </thead>
+    <tbody>
+        {{# if categories}}
+            {{# each categories }}
+            <tr>
+                <td>{{this.title}}</td>
+            <td>{{this.description}}</td>
+            <td><a href="categories/delete/{{this._id}}">delete category</a></td>
+            
+            </tr>
+    {{/each}}                     
+<br>
+
+{{/if}}
+
+    </tbody>
+</table> 

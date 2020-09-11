@@ -13,10 +13,10 @@ const userSchema= new schema({
         type:String,
         required:true
     },
-    is_buyer:{
-        type:Boolean,
-        default:true
-    },
+    role:{
+        type:String,
+        
+    }, 
 });
 
 //hash [password using bcrypt]

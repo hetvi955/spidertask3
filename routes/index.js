@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const isauth= require('../routes/user');
-const Product=require('../models/item');
+const Item=require('../models/item');
 const cart = require('../models/cartitems'); 
-const isnotauth = require('../routes/user');
+
 
 //render products array
 router.get('/home', isauth,function(req, res, next) {
-  Product.find((error,docs)=>{
+    Item.find((error,docs)=>{
     //to display in rows of 3
     var productarr=[];
     for(var i=0; i<docs.length; i+=3){
@@ -18,7 +17,7 @@ router.get('/home', isauth,function(req, res, next) {
   }); 
 });
 
-router.get('/',isnotauth, (req,res)=>{
+router.get('/', (req,res)=>{
   res.render('users/login')
 });
 
@@ -27,7 +26,7 @@ router.get('/addnew/:id',isauth, (req,res)=>{
   var newcart= new cart(req.session.newcart ? req.session.newcart:{
     //new cart object
   });
-  Product.findById(productId, (err, product)=>{
+ Item.findById(productId, (err, product)=>{
     if(err){
       return res.redirect('/home');
     }
@@ -46,6 +45,18 @@ router.get('/cart',isauth, (req,res)=>{
   var Cart = new cart(req.session.newcart);
   res.render('cart', {products:Cart.addarr(), totalmoney:Cart.totalmoney})
 });
+
+router.get('/clearcart', (req,res)=>{
+  delete req.session.newcart;
+  res.redirect('/cart')
+});
+
+function isauth(req,res,next){
+  if(req.isAuthenticated()){
+      return next();
+  }
+  res.redirect('/');
+};
 
 
 module.exports = router;

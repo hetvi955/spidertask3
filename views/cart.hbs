@@ -1,3 +1,5 @@
+{{> navbar}}
+<br><br>
 {{# if products}}
 <div class="row">
     <div class="col-sm-6 col-md-4">
@@ -8,7 +10,7 @@
                     {{this.quantity}}
                 </span>
                 <strong style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 30px">{{this.item.title}}</strong>
-                <span class="label" style="float: right; padding-top:10px"> Total price: ${{this.price}}</span>   
+                <span class="label" style="float: right; padding-top:10px"> Total price: ${{this.price}}</span>  
             </li>
             {{/each}}
             
@@ -16,7 +18,10 @@
     </div>
 </div>
 <br>
+ 
 <div style='font-size:25px;color:rgb(99, 99, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;'>Total cart collection: {{this.totalmoney}} </div>
+<br>
+<span class="btn btn-danger"><a href="/clearcart"  style="text-decoration: none; color:seashell">Clear cart</a></span>
 {{ else}}
 <div style="align-self:center; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><p>no items in cart :(</p></div>
 {{/if}}

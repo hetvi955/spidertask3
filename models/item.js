@@ -2,10 +2,6 @@ const mongoose =require('mongoose');
 const Schema= mongoose.Schema;
 
 const itemschema= new Schema({
-    image:{
-        type:String,
-        required:true
-    },
     title:{
         type:String,
         required:true
@@ -17,6 +13,14 @@ const itemschema= new Schema({
     price:{
         type:Number,
         required:true
+    },
+    image:{
+        type:String,
+    
+    }, 
+    category:{
+        type:String,
+        
     },    
 });
 

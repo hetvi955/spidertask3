@@ -8,11 +8,14 @@
   align-self: center; 
 }
 .card .btn{
-  background:rgb(61, 143, 61);
   color:whitesmoke;
   float:right;
 }
 .card .price{
   font-size:20px;
   float:left;
+}
+#previewimage{
+  margin:10px;
+  max-width: 30px;
 }

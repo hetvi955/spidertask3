@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {{# if login}}
+      <a class="nav-link active" href="/admin" style="padding-left:20px;"><i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/admin/categories/addcategory" style="padding-left:20px;"><i class="fas fa-plus"></i> category</a>
+      <a class="nav-link" href="/admin/items/additem" style="padding-left:20px;"><i class="fas fa-plus"></i> product</a>
+        <a class="nav-link" href="/user/logout" style="margin-left:600px"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        
+        
+      {{else}}
+      <a href="/user/login" style="padding-top:8px; margin-left:8px; text-decoration:none; color:inherit"> Login / Sign up</a>
+      {{/if}}
+      </div>
+  </div>
+</nav>
+<br>
+
+<h1>Products</h1>
+
+<br>
+<br>
+
+<table class="table table-striped">
+    <thead>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price</th>
+        
+    </thead>
+    <tbody>
+        {{# if items}}
+            {{# each items }}
+            <tr>
+            <td>{{this.title}}</td>
+            <td>{{this.description}}</td>
+            <td>${{this.price}}</td>
+            <td><img src="../public/images/{{this._id}}/{{this.image}}" ></td>
+            <td>{{this.category}}</td>
+            <td><a href="/admin/items/delete/{{this._id}}">delete product</a></td>
+            
+            </tr>
+    {{/each}}  
+    {{ else}}                   
+<h3>No products availaible right now :(</h3>
+{{/if}}
+
+    </tbody>
+</table> 

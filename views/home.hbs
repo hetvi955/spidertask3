@@ -7,23 +7,30 @@
   <title>Dashboard</title>
 </head>
 <body>
-{{# each products }}
-  <div class='row'>
-    {{# each this }}
-      <div class="col-sm-6 col-md-4">
-      <div class="card">
-      <img src="{{ this.image}}" class="img-responsive" alt="...">
-      <div class="card-body">
-      <h5 class="card-title">{{ this.title}}</h5>
-      <p class="card-text">{{ this.description}}</p>
-      <div class='price'>{{ this.price}}</div>
-      <a href="/addnew/{{this._id}}" class='btn' role='button'>Add to cart!</a>
-    </div>
-    </div>
-    </div>
+  {{> navbar}}
+  <br><br>
 
-    {{/ each}}
-    </div>
-{{/ each}} 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Categories</h3>
+      <br>
+      <ul class="list-group">
+        <ul class="list-group-item">
+          <a href="/items"> View All Products</a>
+          <hr>
+           {{# if category}}
+            {{# each category }}
+            <a href="/items/{{this.title}}">{{this.title}}</a>
+            <br>
+    {{/each}}                     
+<br>
+
+{{/if}}
+        </ul>
+      </ul>
+    </div>  
+  </div>
+</div>
 </body>
 </html>
