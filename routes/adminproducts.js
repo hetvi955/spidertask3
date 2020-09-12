@@ -7,15 +7,15 @@ var Category= require('../models/category');
 
 //set storage for uploads
 const storage= multer.diskStorage({
-    destination:'../public/uploadimages',
+    destination:'../public/uploadimages/',
     filename: function(req, file, cb){
       cb(null, file.fieldname + '.' + Date.now() + path.extname(file.originalname));
     }
   });
+
   const upload=multer({
     storage:storage,
-   
-  }).single('image');
+  });
   
 
 router.get('/',isauth, (req,res)=>{
@@ -25,7 +25,7 @@ router.get('/',isauth, (req,res)=>{
     })
     
 });
-router.get('/additem', upload, (req,res)=>{
+router.get('/additem', (req,res)=>{
     var title='';
     var description='';
     var price='';
@@ -41,7 +41,7 @@ router.get('/additem', upload, (req,res)=>{
     });
     
 });
-router.post('/additem', (req,res)=>{
+router.post('/additem', upload.single('image'), (req,res)=>{
     var title=req.body.title;
     var description=req.body.description;
     var price=req.body.price;
@@ -62,19 +62,12 @@ router.post('/additem', (req,res)=>{
         item.save(function(err) {
            if (err) return console.log(err);
            });
-
+            console.log(req.file, req.body)
            res.redirect('/admin/items')
         });
       
     });
 
-    router.post('/upload', (req,res)=>{
-        upload(req,res,(err)=>{
-            if(err) console.log(err);
-            console.log(req.file);
-            res.send('uploaded')
-        })
-    })
     router.get('/delete/:id', (req,res)=>{
         Item.findByIdAndRemove(req.params.id, function(err){
             if(err){
