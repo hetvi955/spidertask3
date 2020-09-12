@@ -1,3 +1,4 @@
+<hr>
 <h1>Sign Up</h1>
 
 {{! to output error messages using flash}}
@@ -8,22 +9,19 @@
         {{/each}}
     </div>
 {{/if}}
-
+<br>
 <form action="/user/register" method="POST">
     <div class='form-group'>
         <label for="email">Email</label>
-        <input type="email" id='email' name='email' class='form-control'>
+        <input type="email" id='email' name='email' placeholder='xyz@xyz.com' class='form-control'>
     </div>
     <div class='form-group'>
         <label for="password">Password</label>
-        <input type="password" id='password' name='password' class='form-control'>
+        <input type="password" id='password' name='password'placeholder='Enter password' class='form-control'>
     </div>
     <div class='form-group'>
-        <label for="category">Category</label>
-        <select name="role" id="role" >
-            <option value="customer">Customer</option>
-            <option value="seller">Seller</option>
-        </select>
+        <label for="contact">Contact</label>
+        <input type="text" id='contact' name='contact' placeholder='123-456-6780'class='form-control'>
     </div>
-    <button type="submit">Sign Up!</button>
+    <button type="submit" class='btn btn-success'>Sign Up!</button>
 </form>

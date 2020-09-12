@@ -15,6 +15,7 @@ const Handlebars = require('handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 //authentication
 const passport=require('passport');
+const multer=require('multer');
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
@@ -32,9 +33,9 @@ dotenv.config({
   path:'./config/config.env'
 });
 connectdb();
-
 //require passport localstartegy
 require('./config/passport');
+
 
 // view engine
 //to set up .hbs as handlebars extension
@@ -91,7 +92,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
- // console.log(err)
+  console.log(err)
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

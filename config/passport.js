@@ -19,6 +19,7 @@ passport.use('local.signup', new localStrategy({
     passwordField:'password',
     passReqToCallback:true
 }, (req,email,password,done)=>{
+    var contact = req.body.contact;
     User.findOne({'email':email}, (err,user)=>{
         if(err){
             return done(err);
@@ -29,8 +30,8 @@ passport.use('local.signup', new localStrategy({
         //if no err and no user, create new user using scheama
         var hashedpass=newUser.hashPassword(password);
         newUser.email= email;
+        newUser.contact= contact;
         newUser.password=hashedpass;
-        newUser.role=req.body.role;
         newUser.save((err, result)=>{
             if(err){
                 return done(err);

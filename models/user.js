@@ -13,8 +13,9 @@ const userSchema= new schema({
         type:String,
         required:true
     },
-    role:{
-        type:String,
+    contact:{
+        type:Number,
+        required:true
         
     }, 
 });

@@ -11,10 +11,12 @@
       <h5 class="card-title">{{ this.title}}</h5>
       <p class="card-text">{{ this.description}}</p>
       <div class='price'>${{ this.price}}</div>
-      <a href="/addnew/{{this._id}}" class='btn btn-success' role='button'>Add to cart!</a>
+      <a href="/addnew/{{this._id}}" class='btn btn-success' role='button'>Add to cart</a>
+      <a href="/order/{{this._id}}" class='btn btn-primary' role='button' style='margin-right:4px'>Order now!</a>
       <br>
       <br>
-      <div style="color: darkcyan;">{{ this.category}}</div>
+      <div style="color: darkcyan;">Category: {{ this.category}}</div>
+      <div style="color: darkcyan;">In stock: {{ this.quantity}}</div>
         
     </div>
     </div>

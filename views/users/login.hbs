@@ -1,3 +1,4 @@
+<hr>
 <h1>Log in</h1>
 
 {{! to output error messages using flash}}
@@ -8,7 +9,7 @@
         {{/each}}
     </div>
 {{/if}}
-
+<br>
 <form action="/user/login" method="POST">
     <div class='form-group'>
         <label for="email">Email</label>
@@ -19,8 +20,9 @@
         <input type="password" id='password' name='password' class='form-control'>
     </div>
     
-    <button type="submit">Log in!</button>
+    <button class='btn btn-success' type="submit">Log in!</button>
     <div>
-        <a href="/user/register">Don't have an account? Sign up!</a>
+        <br>
+        <a  style='text-decoration:none; color:rgb(99, 99, 99)' href="/user/register">Don't have an account? Sign up!</a>
     </div>
 </form>

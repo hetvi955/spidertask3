@@ -1,10 +1,22 @@
 const express=require('express');
 const router= express.Router();
-const mkdirp =require('mkdirp');
-const fs =require('fs-extra');
+const multer=require('multer');
 
 var Item= require('../models/item');
 var Category= require('../models/category');
+
+//set storage for uploads
+const storage= multer.diskStorage({
+    destination:'../public/uploadimages',
+    filename: function(req, file, cb){
+      cb(null, file.fieldname + '.' + Date.now() + path.extname(file.originalname));
+    }
+  });
+  const upload=multer({
+    storage:storage,
+   
+  }).single('image');
+  
 
 router.get('/',isauth, (req,res)=>{
     Item.find(function(err, items){
@@ -13,7 +25,7 @@ router.get('/',isauth, (req,res)=>{
     })
     
 });
-router.get('/additem', (req,res)=>{
+router.get('/additem', upload, (req,res)=>{
     var title='';
     var description='';
     var price='';
@@ -30,12 +42,11 @@ router.get('/additem', (req,res)=>{
     
 });
 router.post('/additem', (req,res)=>{
-    itemsarr=[];
     var title=req.body.title;
     var description=req.body.description;
     var price=req.body.price;
     var category=req.body.category;
-    var imagefile= req.files.image.name;
+    var quantity=req.body.quantity;
 
     Item.findOne({title:title},function(err, items){
         if (err) return console.log(err);
@@ -44,26 +55,26 @@ router.post('/additem', (req,res)=>{
             description:description,
             category:category,
             price:price,
-            image:imagefile
+            quantity:quantity,
+           
         });
 
         item.save(function(err) {
            if (err) return console.log(err);
-
-          // mkdirp('public/images/' + item._id, function(err){
-               //console.log(err);
            });
-          // if(imagefile!=""){
-               //var productimg=req.files.image;
-               //var path='public/images/'+item._id+'/'+imagefile;
-               //productimg.mv(path, function(err){
-                //   console.log(err)
-               //});
-          // }
+
            res.redirect('/admin/items')
         });
       
     });
+
+    router.post('/upload', (req,res)=>{
+        upload(req,res,(err)=>{
+            if(err) console.log(err);
+            console.log(req.file);
+            res.send('uploaded')
+        })
+    })
     router.get('/delete/:id', (req,res)=>{
         Item.findByIdAndRemove(req.params.id, function(err){
             if(err){

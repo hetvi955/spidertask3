@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const Item=require('../models/item');
 const cart = require('../models/cartitems'); 
+const order = require('../models/orders'); 
+
 
 
 //render products array
@@ -51,6 +53,36 @@ router.get('/clearcart', (req,res)=>{
   res.redirect('/cart')
 });
 
+router.get('/order/:id',isauth, (req,res)=>{
+  var productId= req.params.id;
+  var neworder= new order(req.session.neworder ? req.session.neworder:{
+    //new object
+  });
+ Item.findById(productId, (err, product)=>{
+    if(err){
+      return res.redirect('/home');
+    }
+    neworder.add(product, product.id);
+    req.session.neworder= neworder;
+    console.log(req.session.neworder);
+    res.redirect('/orders');
+    
+  });
+});
+
+router.get('/orders',isauth, (req,res)=>{
+  if(!req.session.neworder){
+    return res.render('order', {products:null});
+  }
+  var Order = new order(req.session.neworder);
+  res.render('order', {products:Order.addarr(), totalmoney:Order.totalmoney})
+});
+
+router.get('/clearorders', (req,res)=>{
+  delete req.session.neworder;
+  res.redirect('/orders')
+});
+
 function isauth(req,res,next){
   if(req.isAuthenticated()){
       return next();
@@ -58,5 +90,18 @@ function isauth(req,res,next){
   res.redirect('/');
 };
 
+router.get('/role',(req,res)=>{
+  var messages= req.flash('error');
+  res.render('users/role', {messages:messages, errors: messages.length >0} );
+});
+
+router.post('/role',(req,res)=>{
+  console.log(req.body.role);
+  if(req.body.role==='seller'){
+    res.redirect('/admin')
+  }else if (req.body.role==='customer'){
+    res.redirect('/home')
+  }
+});
 
 module.exports = router;

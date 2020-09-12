@@ -1,7 +1,7 @@
 
 {{> navbar}}
 <br>
-<h3 style="color: darkblue; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:45%; font-weight:300">My Cart</h3>
+<h3 style="color: darkblue; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:45%; font-weight:300">My Orders</h3>
 <br><br>
 {{# if products}}
 <div class="row">
@@ -22,9 +22,9 @@
 </div>
 <br>
  
-<div style='font-size:25px;color:rgb(99, 99, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;'>Total cart collection: {{this.totalmoney}} </div>
+<div style='font-size:25px;color:rgb(99, 99, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;'>Total bill: {{this.totalmoney}} </div>
 <br>
-<span class="btn btn-danger"><a href="/clearcart"  style="text-decoration: none; color:seashell">Clear cart</a></span>
+<span class="btn btn-danger"><a href="/clearorders"  style="text-decoration: none; color:seashell">Cancel orders</a></span>
 {{ else}}
-<div style="align-self:center; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><p>no items in cart :(</p></div>
+<div style="align-self:center; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><p>nothing ordered :(</p></div>
 {{/if}}

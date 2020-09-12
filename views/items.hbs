@@ -29,6 +29,7 @@
         <th>Product</th>
         <th>Description</th>
         <th>Price</th>
+        <th>Quantity</th>
         
     </thead>
     <tbody>
@@ -38,6 +39,7 @@
             <td>{{this.title}}</td>
             <td>{{this.description}}</td>
             <td>${{this.price}}</td>
+            <td>{{this.quantity}}</td>
             <td><img src="../public/images/{{this._id}}/{{this.image}}" ></td>
             <td>{{this.category}}</td>
             <td><a href="/admin/items/delete/{{this._id}}">delete product</a></td>

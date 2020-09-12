@@ -18,7 +18,7 @@ router.get('/logout',isauth,(req,res)=>{
     res.render('users/register', {messages:messages, errors: messages.length >0} );
   });
   router.post('/register',passport.authenticate('local.signup',{
-    successRedirect: '/home',
+    successRedirect: '/',
     failureRedirect:'/user/register',
     //flash message in case of failure
     failureFlash:true
@@ -30,8 +30,8 @@ router.get('/logout',isauth,(req,res)=>{
   });
 
   router.post('/login',passport.authenticate('local.signin',{
-    successRedirect: '/home',
-    failureRedirect:'/user/login',
+    successRedirect: '/role',
+    failureRedirect:'/login',
     //flash message in case of failure
     failureFlash:true
   })

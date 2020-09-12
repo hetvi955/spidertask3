@@ -11,25 +11,26 @@
   <br><br>
 
 <div class="container">
+  
   <div class="row">
-    <div class="col-md-3">
-      <h3>Categories</h3>
-      <br>
-      <ul class="list-group">
-        <ul class="list-group-item">
-          <a href="/items"> View All Products</a>
-          <hr>
+      <h3> Quick nav  </h3>
+      <hr>
+      <table class='table table-striped'>
+          <a href="/items" style='text-decoration:none; color:rgb(69, 178, 182); font-size:1.4em'> View All Products</a>
+         <td><h5>Categories</h5></td>
+         
+          <tr>
            {{# if category}}
             {{# each category }}
-            <a href="/items/{{this.title}}">{{this.title}}</a>
+            
+              <td><a href="/items/{{this.title}}"  style='text-decoration:none; color:rgb(72, 162, 165);'> > {{this.title}}</a></td>
+            </tr>
             <br>
     {{/each}}                     
 <br>
 
 {{/if}}
-        </ul>
-      </ul>
-    </div>  
+      </table>   
   </div>
 </div>
 </body>
