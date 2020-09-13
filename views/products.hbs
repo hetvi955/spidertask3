@@ -1,3 +1,4 @@
+
 {{> navbar}}
 <br><br>
 
@@ -5,10 +6,12 @@
   <div class='row'>
     {{#each items }}
       <div class="col-sm-6 col-md-4">
+        
       <div class="card">
       <img src="{{ this.image}}" class="img-responsive" alt="...">
       <div class="card-body">
       <h5 class="card-title">{{ this.title}}</h5>
+
       <p class="card-text">{{ this.description}}</p>
       <div class='price'>${{ this.price}}</div>
       <a href="/addnew/{{this._id}}" class='btn btn-success' role='button'>Add to cart</a>
@@ -16,7 +19,7 @@
       <br>
       <br>
       <div style="color: darkcyan;">Category: {{ this.category}}</div>
-      <div style="color: darkcyan;">In stock: {{ this.quantity}}</div>
+      <div  style="color: darkcyan;">In stock: {{this.quantity}}</div>
         
     </div>
     </div>

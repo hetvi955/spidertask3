@@ -3,11 +3,12 @@ const router= express.Router();
 
 var Item= require('../models/item');
 var Category= require('../models/category');
+var User= require('../models/user');
 
 router.get('/', (req,res)=>{
     Item.find(function(err, items){
         if(err) return console.log(err);
-        res.render('products', {title: 'Products', items:items});
+        res.render('products', {title: 'Products', items:items, User:User});
     })  
 });
 

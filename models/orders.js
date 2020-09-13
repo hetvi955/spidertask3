@@ -1,3 +1,4 @@
+const item= require('../models/item');
 function order(oldorders) {
     //fetch all old items 
     this.items= oldorders.items || {};
@@ -14,10 +15,13 @@ function order(oldorders) {
                 item:item, quantity:0, price:0
             };
         };
+        
         orders.quantity++;
         orders.price= orders.item.price*orders.quantity;
         this.totalmoney+=orders.item.price;
-        this.total++
+        this.total++;
+        quantity2= item.quantity--;
+        console.log('quantitupdated:',item.quantity);
     };
     //make an array of all items 
     this.addarr= function(){

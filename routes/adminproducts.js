@@ -29,6 +29,7 @@ router.get('/additem', (req,res)=>{
     var title='';
     var description='';
     var price='';
+    var quantity=';'
     
     Category.find(function(err, category){
         res.render('additem', {
@@ -36,12 +37,13 @@ router.get('/additem', (req,res)=>{
             description:description,
             price:price,
             category:category,
+            quantity:quantity
         });
         
     });
     
 });
-router.post('/additem', upload.single('image'), (req,res)=>{
+router.post('/additem',  (req,res)=>{
     var title=req.body.title;
     var description=req.body.description;
     var price=req.body.price;
