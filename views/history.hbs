@@ -1,0 +1,27 @@
+{{> navbar}}
+<br>
+<h3 style="color: darkblue; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:45%; font-weight:300">Purchase History</h3>
+<br><br>
+{{# if products}}
+
+        <ul class='list-group'>
+            {{# each products }}
+                <li class="list-group-item">
+                <span  class='badge' style="margin-right: 40px; background:darkblue; color:whitesmoke; padding: 6px;">
+                    {{this.quantity}}
+                </span>
+                <div>Date:</div>
+                {{this.time}}
+                <br>
+                <strong style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 30px">{{this.item.title}}</strong>
+                <span class="label" style="float: right; padding-top:10px"> Total price: ${{this.price}}</span>  
+            </li>
+            {{/each}}
+            
+        </ul>
+ 
+<br>
+
+{{ else}}
+<div style="align-self:center; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><p>nothing ordered :(</p></div>
+{{/if}}

@@ -3,7 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const Item=require('../models/item');
 const cart = require('../models/cartitems'); 
-const order = require('../models/orders'); 
+const order = require('../models/orders');
+const history = require('../models/history'); 
 
 
 
@@ -76,6 +77,14 @@ router.get('/orders',isauth, (req,res)=>{
   }
   var Order = new order(req.session.neworder);
   res.render('order', {products:Order.addarr(), totalmoney:Order.totalmoney})
+});
+
+router.get('/history',isauth, (req,res)=>{
+  if(!req.session.neworder){
+    return res.render('history', {products:null});
+  }
+  var Order = new order(req.session.neworder);
+  res.render('history', {products:Order.addarr(), totalmoney:Order.totalmoney})
 });
 
 router.get('/clearorders', (req,res)=>{
