@@ -19,7 +19,9 @@ function order(oldorders) {
         orders.quantity++;
         orders.price= orders.item.price*orders.quantity;
         this.totalmoney+=orders.item.price;
-        this.total++
+        this.total++;
+        quantity2= item.quantity--;
+        console.log('quantitupdated:',item.quantity);
     };
     //make an array of all items 
     this.addarr= function(){
